@@ -1617,14 +1617,141 @@ a { color: inherit; }
 }
 
 /* ===========================
-   Responsive
+   Responsive — tablet (≤768px)
    =========================== */
-@media (max-width: 700px) {
-  .app { padding: 0 16px 48px; }
-  .topnav { margin: 8px 12px 0; padding: 8px 12px; }
-  .brand-text { font-size: 15px; }
-  .nav-actions .btn { padding: 8px 14px; font-size: 13px; }
-  .quiz-container { padding: 24px; }
-  .stage-card { padding: 36px 24px; }
+@media (max-width: 768px) {
+  /* Nav */
+  .topnav { margin: 8px 12px 0; padding: 10px 14px; }
   .progress-pill { display: none; }
+  .nav-actions .btn { padding: 8px 14px; font-size: 13px; }
+
+  /* Dashboard header — stack ring below text */
+  .dash-top { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .ring-progress { display: none; }
+
+  /* Module cards */
+  .module-card { padding: 20px; }
+
+  /* Quiz container */
+  .quiz-container { padding: 20px; }
+  .quiz-foot { gap: 8px; }
+
+  /* Lesson module wrapper already collapses at 960 */
+  .module-wrapper { padding: 0; }
+
+  /* Exam scenario card */
+  .exam-scenario { padding: 14px 16px; }
+
+  /* ToC wizard — collapse sidebar to top stepper */
+  .toc-wizard {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: "sidebar" "main" "strip";
+  }
+  .toc-sidebar {
+    flex-direction: row; flex-wrap: nowrap; overflow-x: auto;
+    padding: 12px 16px; gap: 6px;
+    border-right: none; border-bottom: 1px solid var(--border);
+  }
+  .toc-sidebar-label { display: none; }
+  .toc-sidebar-step {
+    flex-direction: column; align-items: center; gap: 4px;
+    padding: 6px 10px; flex-shrink: 0;
+  }
+  .toc-sidebar-name { font-size: 10px; white-space: nowrap; }
+  .toc-main { padding: 20px 18px 16px; }
+  .toc-step-head { gap: 12px; }
+  .toc-step-num { font-size: 36px; }
+  .toc-step-title { font-size: 20px; }
+
+  /* ToC product */
+  .toc-prod-topbar { flex-wrap: wrap; gap: 10px; }
+  .toc-prod-topbar-actions { flex-wrap: wrap; gap: 8px; }
+  .toc-prod-doc-header { flex-direction: column; gap: 8px; padding: 20px; }
+  .toc-prod-chain { flex-direction: column; padding: 20px; gap: 0; }
+  .toc-prod-connector {
+    flex-direction: row; writing-mode: horizontal-tb;
+    padding: 8px 0; margin-top: 0; width: 100%;
+  }
+  .toc-prod-arrow-line svg { transform: rotate(90deg); }
+  .toc-prod-assumption {
+    writing-mode: horizontal-tb; text-orientation: mixed;
+    max-height: none; font-size: 10.5px;
+    border-left: 2px solid rgba(200,122,40,.3);
+    padding-left: 8px; margin-left: 8px;
+  }
+  .toc-prod-col { min-width: unset; max-width: 100%; }
+  .toc-prod-doc-footer { padding: 14px 20px; }
+
+  /* Dash tool card */
+  .dash-tool-card { flex-wrap: wrap; gap: 14px; padding: 18px; }
+}
+
+/* ===========================
+   Responsive — phone (≤480px)
+   =========================== */
+@media (max-width: 480px) {
+  /* Base layout */
+  .app { padding: 0 12px 48px; }
+  .brand-text { font-size: 14px; }
+
+  /* Nav: hide Resume, keep just Start reading */
+  #navResume { display: none !important; }
+
+  /* Page heads */
+  .page-head { padding: 24px 0 16px; }
+  .h1 { font-size: clamp(24px, 7vw, 40px); }
+
+  /* Hero */
+  .hero { padding: 36px 0 16px; }
+  .hero-titlemark .h-line-2 { font-size: clamp(44px, 14vw, 80px); }
+  .hero-cta { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .hero-cta .btn { width: 100%; justify-content: center; }
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+
+  /* Journey map nodes already stacked at 760px */
+  .pj-nodes { flex-direction: column; gap: 10px; }
+  .pj-connector { display: none; }
+  .pj-node { flex-direction: row; align-items: center; gap: 12px; }
+  .pj-circle { flex-shrink: 0; }
+  .pj-name { margin-top: 0; }
+  .pj-sub { display: none; }
+
+  /* Quiz foot: stack on very small screens */
+  .quiz-foot { flex-wrap: wrap; justify-content: space-between; }
+  .quiz-foot .muted { width: 100%; text-align: center; order: -1; font-size: 11px; }
+  .quiz-q h2 { font-size: 18px; }
+  .option { padding: 12px 14px; }
+  .option-label { font-size: 13.5px; }
+
+  /* Exam scenario */
+  .exam-scenario { font-size: 13.5px; }
+  .scenario-badge { font-size: 9px; }
+
+  /* ToC builder */
+  .toc-sidebar { padding: 10px 12px; }
+  .toc-sidebar-name { display: none; }
+  .toc-sidebar-dot { width: 28px; height: 28px; font-size: 12px; }
+  .toc-main { padding: 16px 14px 14px; }
+  .toc-step-num { display: none; }
+  .toc-foot { flex-direction: row; gap: 8px; }
+  .toc-foot .btn { flex: 1; text-align: center; justify-content: center; padding: 10px 12px; font-size: 13px; }
+
+  /* Module lessons */
+  .lesson-body { padding: 0 4px; }
+  .lesson-content { font-size: 15px; }
+  .sidebar-lesson { padding: 8px 12px; font-size: 13px; }
+
+  /* Criteria grid */
+  .criteria-grid { grid-template-columns: 1fr; }
+
+  /* Stage/result cards */
+  .stage-card { padding: 28px 18px; }
+  .stage-stats { flex-wrap: wrap; gap: 16px; }
+
+  /* Certificate */
+  .cert-form { padding: 20px; }
+  .cert-actions { flex-direction: column; }
+  .cert-actions .btn { width: 100%; }
+  .certificate { transform: scale(0.55); transform-origin: top center; }
 }
