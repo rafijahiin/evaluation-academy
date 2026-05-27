@@ -1,0 +1,14 @@
+# Source handbook files (large, copyrighted)
+unfpa-handbook.pdf
+unfpa-handbook.txt
+
+# Claude Code local config
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Evaluation Academy — Learn Evaluation, Beautifully</title>
+<meta name="description" content="An immersive, chapter-by-chapter course on evaluation theory and practice — based on the UNFPA Evaluation Handbook." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- Reading progress bar (lesson only) -->
+<div class="read-progress" id="readProgress" hidden><i></i></div>
+
+<!-- Animated mesh background -->
+<div class="mesh-bg" aria-hidden="true">
+  <div class="mesh m1"></div>
+  <div class="mesh m2"></div>
+  <div class="mesh m3"></div>
+  <div class="mesh m4"></div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- Top navigation -->
+<nav class="topnav glass" id="topnav">
+  <a href="#" class="brand" data-route="home" aria-label="Evaluation Academy home">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 32 32" width="28" height="28">
+        <defs>
+          <linearGradient id="lg1" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0" stop-color="#0E7C7B"/>
+            <stop offset="1" stop-color="#173F5F"/>
+          </linearGradient>
+        </defs>
+        <circle cx="16" cy="16" r="14" fill="none" stroke="url(#lg1)" stroke-width="2"/>
+        <path d="M9 17l4 4 10-11" fill="none" stroke="url(#lg1)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    <span class="brand-text"><b>Evaluation</b> Academy</span>
+  </a>
+  <div class="nav-actions">
+    <span class="progress-pill" id="navProgress" hidden>
+      <span class="dot"></span><span id="navProgressText">0% complete</span>
+    </span>
+    <button class="btn btn-ghost" id="navResume" hidden>Resume</button>
+    <button class="btn btn-primary" data-route="dashboard" id="navStart">Start reading</button>
+  </div>
+</nav>
+
+<main id="app" class="app">
+
+  <!-- =================== HOME =================== -->
+  <section class="route route-home" data-route-section="home">
+
+    <div class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">An immersive course · Based on the UNFPA Evaluation Handbook</span>
+
+        <div class="hero-titlemark" aria-hidden="true">
+          <span class="h-line-1">Learn the craft of</span>
+          <span class="h-line-2">evaluation</span>
+          <span class="h-line-3">— chapter by chapter.</span>
+        </div>
+        <h1 class="sr-only" style="position:absolute;left:-9999px;">Learn the craft of evaluation — chapter by chapter.</h1>
+
+        <p class="lede">
+          Five chapters. The exact five-phase journey of an evaluation, as it unfolds in the UNFPA handbook. Beautifully visualised. Self-paced. Read freely — or take an optional assessment to get a tailored path.
+        </p>
+
+        <div class="hero-cta">
+          <button class="btn btn-primary btn-lg" data-route="dashboard">
+            Start reading
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+          <button class="btn btn-ghost btn-lg" data-route="quiz">Take 2-min assessment <span class="muted" style="opacity:0.6">· optional</span></button>
+        </div>
+
+        <div class="trust-row">
+          <div class="trust-item"><strong>5</strong><span>Chapters</span></div>
+          <div class="trust-divider"></div>
+          <div class="trust-item"><strong>34</strong><span>Lessons</span></div>
+          <div class="trust-divider"></div>
+          <div class="trust-item"><strong>~5 hrs</strong><span>Self-paced</span></div>
+          <div class="trust-divider"></div>
+          <div class="trust-item"><strong>Verified</strong><span>Certificate</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+
+        <!-- Animated CPE phase journey card -->
+        <div class="phase-journey">
+          <div class="pj-label">CPE Phase Journey · UNFPA Handbook 2024</div>
+
+          <div class="pj-nodes">
+            <!-- Animated connecting path -->
+            <div class="pj-connector">
+              <svg class="pj-connector-svg" viewBox="0 0 460 40" preserveAspectRatio="none" fill="none">
+                <defs>
+                  <linearGradient id="pjGrad" x1="0" x2="1">
+                    <stop offset="0" stop-color="#0E7C7B" stop-opacity="0.7"/>
+                    <stop offset="0.5" stop-color="#0A5F5E" stop-opacity="0.55"/>
+                    <stop offset="1" stop-color="#173F5F" stop-opacity="0.5"/>
+                  </linearGradient>
+                </defs>
+                <path class="pj-path" d="M 24 20 L 115 20 L 207 20 L 299 20 L 437 20"
+                  stroke="url(#pjGrad)" stroke-width="1.5" stroke-dasharray="5 6"/>
+              </svg>
+            </div>
+
+            <div class="pj-node">
+              <div class="pj-circle">01</div>
+              <span class="pj-name">Preparation</span>
+              <span class="pj-sub">Launch · YEE · ToR</span>
+            </div>
+            <div class="pj-node">
+              <div class="pj-circle">02</div>
+              <span class="pj-name">Design</span>
+              <span class="pj-sub">Matrix · Methods</span>
+            </div>
+            <div class="pj-node">
+              <div class="pj-circle">03</div>
+              <span class="pj-name">Fieldwork</span>
+              <span class="pj-sub">KIIs · FGDs · Survey</span>
+            </div>
+            <div class="pj-node">
+              <div class="pj-circle">04</div>
+              <span class="pj-name">Reporting</span>
+              <span class="pj-sub">Findings · Co-creation</span>
+            </div>
+            <div class="pj-node">
+              <div class="pj-circle">05</div>
+              <span class="pj-name">Dissemination</span>
+              <span class="pj-sub">Strategic comm.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Three transformative results -->
+        <div class="results-mini-card">
+          <div class="rmc-label">Three Transformative Results by 2030</div>
+          <div class="rmc-items">
+            <div class="rmc-item"><span class="rmc-dot"></span>Zero unmet need for family planning</div>
+            <div class="rmc-item"><span class="rmc-dot"></span>Zero preventable maternal death</div>
+            <div class="rmc-item"><span class="rmc-dot"></span>Zero gender-based violence &amp; harmful practices</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- =================== JOURNEY MAP =================== -->
+    <section class="journey">
+      <div class="section-head">
+        <span class="eyebrow">The journey</span>
+        <h2 class="h2">Five phases. One coherent path.</h2>
+        <p class="muted">Each chapter mirrors a phase in the lifecycle of an evaluation. Start anywhere. Read at your own pace.</p>
+      </div>
+
+      <div class="journey-map" id="journeyMap" role="list">
+        <!-- Curve and milestones rendered by JS -->
+      </div>
+    </section>
+
+    <!-- Curriculum table -->
+    <section class="curriculum" id="curriculum">
+      <div class="section-head">
+        <span class="eyebrow">Table of contents</span>
+        <h2 class="h2">The five chapters in detail.</h2>
+      </div>
+      <ol class="toc-list" id="modulePreview"></ol>
+    </section>
+
+    <!-- Bento why-grid -->
+    <section class="bento">
+      <div class="section-head">
+        <span class="eyebrow">Why this course</span>
+        <h2 class="h2">Built for practitioners. Designed for clarity.</h2>
+      </div>
+      <div class="bento-grid">
+        <article class="card glass span-2">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+          </div>
+          <h3>Read freely — or get tailored</h3>
+          <p>Jump into any chapter, in any order. Or take a 2-minute assessment and we'll filter the path to where you are now.</p>
+        </article>
+
+        <article class="card glass">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <h3>Read at your pace</h3>
+          <p>Each chapter opens with a cover, an overview, and contents. Move at your own speed.</p>
+        </article>
+
+        <article class="card glass">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+          </div>
+          <h3>Earn a certificate</h3>
+          <p>Pass the final exam (80%+) to generate a personalised completion certificate.</p>
+        </article>
+
+        <article class="card glass span-2">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5l8 4 8-4v14"/><path d="M4 19l8-4 8 4"/></svg>
+          </div>
+          <h3>Visual &amp; immersive</h3>
+          <p>Every concept paired with diagrams, criterion cards, pullquotes and reflection prompts.</p>
+          <div class="visual-strip">
+            <div class="vs vs1"></div><div class="vs vs2"></div><div class="vs vs3"></div><div class="vs vs4"></div>
+          </div>
+        </article>
+
+        <article class="card glass">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          </div>
+          <h3>Rooted in UNFPA</h3>
+          <p>Content adapted from the UNFPA Evaluation Handbook (2024) — UN-system standards, ethics, equity.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-band glass">
+      <div>
+        <h3 class="h3">Ready when you are.</h3>
+        <p>Open any chapter to start reading. The assessment is optional.</p>
+      </div>
+      <button class="btn btn-primary btn-lg" data-route="dashboard">Start reading</button>
+    </section>
+
+  </section>
+
+  <!-- =================== STAGE ASSESSMENT (optional) =================== -->
+  <section class="route route-quiz" data-route-section="quiz" hidden>
+    <header class="page-head">
+      <span class="eyebrow">Optional · Stage assessment</span>
+      <h1 class="h1">Let's find your starting point.</h1>
+      <p class="muted">10 quick questions. You can skip and go directly to the chapters at any time.</p>
+      <div class="progress-bar" aria-hidden="true">
+        <div class="progress-fill" id="quizProgressFill"></div>
+      </div>
+      <div style="margin-top: 18px;">
+        <button class="btn btn-ghost btn-sm" data-route="dashboard">Skip and start reading →</button>
+      </div>
+    </header>
+    <div id="quizContainer" class="quiz-container glass"></div>
+  </section>
+
+  <!-- =================== STAGE RESULT =================== -->
+  <section class="route route-stage" data-route-section="stage" hidden>
+    <div class="stage-result">
+      <div class="stage-card glass" id="stageCard"></div>
+    </div>
+  </section>
+
+  <!-- =================== DASHBOARD =================== -->
+  <section class="route route-dashboard" data-route-section="dashboard" hidden>
+    <header class="page-head">
+      <div class="dash-top">
+        <div>
+          <span class="eyebrow" id="dashEyebrow">Your path</span>
+          <h1 class="h1" id="dashTitle">Your learning journey</h1>
+          <p class="muted" id="dashSubtitle"></p>
+        </div>
+        <div class="ring-progress" id="ringProgress" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="100" height="100">
+            <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="8"/>
+            <circle id="ringFill" cx="50" cy="50" r="42" fill="none" stroke="url(#og2)" stroke-width="8" stroke-linecap="round" stroke-dasharray="263.9" stroke-dashoffset="263.9" transform="rotate(-90 50 50)"/>
+            <defs>
+              <linearGradient id="og2" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stop-color="#0E7C7B"/>
+                <stop offset="1" stop-color="#173F5F"/>
+              </linearGradient>
+            </defs>
+            <text x="50" y="55" text-anchor="middle" font-size="18" fill="#1C2B3A" font-weight="700" id="ringText">0%</text>
+          </svg>
+        </div>
+      </div>
+      <div id="dashAssessmentCta" hidden>
+        <button class="btn btn-ghost btn-sm" data-route="quiz">
+          Take optional assessment for a tailored path →
+        </button>
+      </div>
+    </header>
+
+    <!-- Mini journey map for path view -->
+    <div class="journey-map small" id="journeyMapDash" role="list"></div>
+
+    <div class="module-grid" id="moduleGrid"></div>
+    <div class="dash-actions">
+      <button class="btn btn-primary btn-lg" id="goExamBtn" disabled>
+        Take the final exam
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </button>
+      <p class="muted small" id="examGate">Complete all chapters to unlock the final exam.</p>
+    </div>
+
+    <div class="dash-tool-cta">
+      <div class="dash-tool-card glass" data-route="toc-builder" role="button" tabindex="0" style="cursor:pointer">
+        <div class="dash-tool-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <div class="dash-tool-text">
+          <strong>Build your Theory of Change</strong>
+          <p>Step-by-step interactive tool. Map inputs → activities → outputs → outcomes → transformative result. Export a printable document.</p>
+        </div>
+        <span class="dash-tool-arrow">→</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== CHAPTER COVER =================== -->
+  <section class="route route-cover" data-route-section="cover" hidden>
+    <div class="chapter-cover">
+      <div class="cover-side-1">
+        <span class="cover-ch-label" id="coverChLabel">Chapter 01</span>
+        <span class="cover-phase-label" id="coverPhaseLabel">—</span>
+        <div class="cover-num-bg" id="coverNumBg">01</div>
+      </div>
+      <div class="cover-side-2">
+        <h1 class="cover-title" id="coverTitle">—</h1>
+        <p class="cover-subtitle" id="coverSubtitle">—</p>
+        <p class="cover-overview" id="coverOverview">—</p>
+        <div class="cover-meta">
+          <span><b id="coverLessons">—</b>lessons</span>
+          <span><b id="coverMinutes">—</b>min read</span>
+        </div>
+        <div class="cover-toc">
+          <div class="toc-eyebrow">In this chapter</div>
+          <ol id="coverTocList"></ol>
+        </div>
+        <div class="cover-actions">
+          <button class="btn btn-primary btn-lg" id="coverBeginBtn">
+            Begin chapter
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+          <button class="btn btn-ghost" data-route="dashboard">Back to journey</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== MODULE (chapter reading) =================== -->
+  <section class="route route-module" data-route-section="module" hidden>
+    <div class="module-wrapper">
+
+      <aside class="lesson-sidebar" id="lessonSidebar">
+        <button class="sb-back" id="sidebarBack">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Back to journey
+        </button>
+        <div class="sb-label">Chapter</div>
+        <div class="sb-chapter" id="sidebarChapter">—</div>
+        <ol id="sidebarList"></ol>
+      </aside>
+
+      <article id="moduleContent" class="module-content"></article>
+    </div>
+
+    <footer class="module-foot">
+      <button class="btn btn-ghost" id="prevLessonBtn">← Previous</button>
+      <span class="muted small" id="lessonCounter">1 / 1</span>
+      <button class="btn btn-primary" id="nextLessonBtn">Next →</button>
+    </footer>
+  </section>
+
+  <!-- =================== EXAM =================== -->
+  <section class="route route-exam" data-route-section="exam" hidden>
+    <header class="page-head">
+      <span class="eyebrow">Final exam</span>
+      <h1 class="h1">Demonstrate what you know.</h1>
+      <p class="muted">17 questions · 2 scenario-based · Pass at 80% or higher · You can retake.</p>
+      <div class="progress-bar" aria-hidden="true">
+        <div class="progress-fill" id="examProgressFill"></div>
+      </div>
+    </header>
+    <div id="examContainer" class="quiz-container glass"></div>
+  </section>
+
+  <!-- =================== RESULT =================== -->
+  <section class="route route-result" data-route-section="result" hidden>
+    <div id="examResult" class="stage-result"></div>
+  </section>
+
+  <!-- =================== CERTIFICATE =================== -->
+  <section class="route route-certificate" data-route-section="certificate" hidden>
+    <header class="page-head center">
+      <span class="eyebrow">Congratulations</span>
+      <h1 class="h1">Your certificate is ready.</h1>
+      <p class="muted">Personalise, then download as PNG or save as PDF.</p>
+    </header>
+    <div class="cert-wrap">
+      <div class="cert-form glass">
+        <label class="field">
+          <span>Your full name</span>
+          <input type="text" id="certName" placeholder="e.g., Amina Rahman" maxlength="60" autocomplete="name"/>
+        </label>
+        <label class="field">
+          <span>Optional title</span>
+          <input type="text" id="certTitle" placeholder="e.g., M&amp;E Officer" maxlength="60"/>
+        </label>
+        <div class="cert-actions">
+          <button class="btn btn-primary" id="downloadPng">Download PNG</button>
+          <button class="btn btn-ghost" id="printPdf">Save as PDF</button>
+          <button class="btn btn-ghost" id="shareCert">Copy share text</button>
+        </div>
+      </div>
+
+      <div class="cert-preview-wrap">
+        <div id="certificate" class="certificate">
+          <div class="cert-border"></div>
+          <div class="cert-corner tl"></div>
+          <div class="cert-corner tr"></div>
+          <div class="cert-corner bl"></div>
+          <div class="cert-corner br"></div>
+          <div class="cert-inner">
+            <div class="cert-mark">
+              <svg viewBox="0 0 64 64" width="56" height="56">
+                <defs>
+                  <linearGradient id="cg" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#0E7C7B"/>
+                    <stop offset="1" stop-color="#173F5F"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="32" cy="32" r="28" fill="none" stroke="url(#cg)" stroke-width="2.5"/>
+                <path d="M20 33l8 8 18-20" fill="none" stroke="url(#cg)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <p class="cert-eyebrow">Evaluation Academy</p>
+            <h2 class="cert-h1">Certificate of Completion</h2>
+            <p class="cert-presented">This is to certify that</p>
+            <h3 class="cert-name" id="certNameOut">Your Name</h3>
+            <p class="cert-title" id="certTitleOut"></p>
+            <p class="cert-body">
+              has successfully completed the immersive course on
+              <em>Evaluation Theory &amp; Practice</em>, including all five chapters and the final assessment,
+              with a score of <strong id="certScore">—</strong>.
+            </p>
+            <div class="cert-meta">
+              <div>
+                <span class="cert-label">Issued</span>
+                <span class="cert-value" id="certDate">—</span>
+              </div>
+              <div class="cert-seal" aria-hidden="true">
+                <svg viewBox="0 0 80 80" width="64" height="64">
+                  <circle cx="40" cy="40" r="36" fill="none" stroke="#0E7C7B" stroke-width="1.5"/>
+                  <circle cx="40" cy="40" r="30" fill="none" stroke="#0E7C7B" stroke-width="0.8" stroke-dasharray="2 2"/>
+                  <text x="40" y="36" text-anchor="middle" font-size="7" fill="#0E7C7B" font-family="Inter, sans-serif" font-weight="700">VERIFIED</text>
+                  <text x="40" y="48" text-anchor="middle" font-size="6" fill="#0E7C7B" font-family="Inter, sans-serif">EVAL ACADEMY</text>
+                </svg>
+              </div>
+              <div>
+                <span class="cert-label">Certificate ID</span>
+                <span class="cert-value" id="certId">—</span>
+              </div>
+            </div>
+            <p class="cert-foot">
+              Based on the UNFPA Evaluation Handbook · Self-paced course · Issued by Evaluation Academy
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== TOC BUILDER =================== -->
+  <section class="route route-toc-builder" data-route-section="toc-builder" hidden>
+    <header class="page-head">
+      <span class="eyebrow">Interactive Tool</span>
+      <h1 class="h1">Build your Theory of Change</h1>
+      <p class="muted">Map your causal chain step by step. Walk away with a printable document.</p>
+    </header>
+    <div id="tocBuilderInner"></div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="foot-inner">
+    <div>
+      <strong>Evaluation Academy</strong>
+      <p class="muted small">An independent learning experience adapted from the UNFPA Evaluation Handbook (2024). Not affiliated with UNFPA.</p>
+    </div>
+    <div class="foot-links">
+      <a href="https://www.unfpa.org/sites/default/files/admin-resource/Final_Eval%20Handbook%202024.pdf" target="_blank" rel="noopener">Source handbook ↗</a>
+      <button class="link" id="resetProgressBtn">Reset progress</button>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="content.js"></script>
+<script src="quiz.js"></script>
+<script src="toc-builder.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
