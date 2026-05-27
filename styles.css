@@ -258,7 +258,7 @@ a { color: inherit; }
 /* ===========================
    App + Routes
    =========================== */
-.app { padding: 0 24px 64px; max-width: 1280px; margin: 0 auto; }
+.app { padding: 0 24px 64px; max-width: 1280px; margin: 0 auto; overflow-x: hidden; }
 .route { animation: routeIn 480ms var(--ease-out); }
 @keyframes routeIn {
   from { opacity: 0; transform: translateY(12px); }
@@ -1477,6 +1477,7 @@ a { color: inherit; }
   grid-area: main;
   padding: 36px 40px 28px;
   display: flex; flex-direction: column; gap: 24px;
+  min-width: 0; overflow: hidden;
 }
 .toc-step-head {
   display: flex; align-items: flex-start; gap: 20px;
@@ -1486,7 +1487,7 @@ a { color: inherit; }
   line-height: 1; color: var(--border); flex-shrink: 0;
   margin-top: -6px; user-select: none;
 }
-.toc-step-head-text { flex: 1; }
+.toc-step-head-text { flex: 1; min-width: 0; overflow-wrap: break-word; }
 .toc-level-chip {
   display: inline-block; font-size: 10px; font-weight: 700;
   letter-spacing: .12em; text-transform: uppercase;
@@ -1692,44 +1693,47 @@ a { color: inherit; }
   .progress-pill { display: none; }
   .nav-actions .btn { padding: 8px 14px; font-size: 13px; }
 
-  /* Dashboard header — stack ring below text */
+  /* Dashboard header */
   .dash-top { flex-direction: column; align-items: flex-start; gap: 16px; }
   .ring-progress { display: none; }
 
   /* Module cards */
   .module-card { padding: 20px; }
 
-  /* Quiz container */
+  /* Quiz */
   .quiz-container { padding: 20px; }
   .quiz-foot { gap: 8px; }
-
-  /* Lesson module wrapper already collapses at 960 */
   .module-wrapper { padding: 0; }
 
-  /* Exam scenario card */
+  /* Exam */
   .exam-scenario { padding: 14px 16px; }
 
-  /* ToC wizard — collapse sidebar to top stepper */
+  /* ToC wizard — collapse sidebar to horizontal top stepper */
   .toc-wizard {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
     grid-template-areas: "sidebar" "main" "strip";
+    overflow: hidden;
   }
   .toc-sidebar {
     flex-direction: row; flex-wrap: nowrap; overflow-x: auto;
     padding: 12px 16px; gap: 6px;
     border-right: none; border-bottom: 1px solid var(--border);
+    scrollbar-width: none; -ms-overflow-style: none;
   }
+  .toc-sidebar::-webkit-scrollbar { display: none; }
   .toc-sidebar-label { display: none; }
   .toc-sidebar-step {
     flex-direction: column; align-items: center; gap: 4px;
     padding: 6px 10px; flex-shrink: 0;
   }
   .toc-sidebar-name { font-size: 10px; white-space: nowrap; }
-  .toc-main { padding: 20px 18px 16px; }
+  .toc-main { padding: 20px 18px 16px; min-width: 0; overflow: hidden; }
   .toc-step-head { gap: 12px; }
   .toc-step-num { font-size: 36px; }
   .toc-step-title { font-size: 20px; }
+  .toc-strip-chain { -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .toc-strip-chain::-webkit-scrollbar { display: none; }
 
   /* ToC product */
   .toc-prod-topbar { flex-wrap: wrap; gap: 10px; }
@@ -1760,11 +1764,13 @@ a { color: inherit; }
 @media (max-width: 480px) {
   /* Base layout */
   .app { padding: 0 12px 48px; }
-  .brand-text { font-size: 14px; }
 
-  /* Nav: hide Resume and ToC text label, keep icon-only button */
+  /* Nav: logo-only brand + compact actions */
+  .brand-text { display: none; }
   #navResume { display: none !important; }
   .nav-toc-label { display: none; }
+  .nav-toc-btn { padding: 8px 10px; }
+  #navStart { padding: 8px 16px; font-size: 13px; }
 
   /* Page heads */
   .page-head { padding: 24px 0 16px; }
@@ -1777,7 +1783,7 @@ a { color: inherit; }
   .hero-cta .btn { width: 100%; justify-content: center; }
   .hero-stats { grid-template-columns: 1fr 1fr; }
 
-  /* Journey map nodes already stacked at 760px */
+  /* Journey map nodes */
   .pj-nodes { flex-direction: column; gap: 10px; }
   .pj-connector { display: none; }
   .pj-node { flex-direction: row; align-items: center; gap: 12px; }
@@ -1785,25 +1791,44 @@ a { color: inherit; }
   .pj-name { margin-top: 0; }
   .pj-sub { display: none; }
 
-  /* Quiz foot: stack on very small screens */
+  /* Quiz */
   .quiz-foot { flex-wrap: wrap; justify-content: space-between; }
   .quiz-foot .muted { width: 100%; text-align: center; order: -1; font-size: 11px; }
   .quiz-q h2 { font-size: 18px; }
   .option { padding: 12px 14px; }
   .option-label { font-size: 13.5px; }
 
-  /* Exam scenario */
+  /* Exam */
   .exam-scenario { font-size: 13.5px; }
   .scenario-badge { font-size: 9px; }
 
-  /* ToC builder */
-  .toc-sidebar { padding: 10px 12px; }
+  /* ToC wizard — phone-optimised */
+  .toc-sidebar { padding: 8px 10px; gap: 4px; }
+  .toc-sidebar-step { padding: 5px 8px; }
   .toc-sidebar-name { display: none; }
-  .toc-sidebar-dot { width: 28px; height: 28px; font-size: 12px; }
+  .toc-sidebar-dot { width: 30px; height: 30px; font-size: 12px; }
   .toc-main { padding: 16px 14px 14px; }
   .toc-step-num { display: none; }
+  .toc-step-head { gap: 0; }
+  .toc-step-hint { font-size: 13px; }
+  /* iOS zoom prevention: inputs must be ≥16px */
+  .toc-input, .toc-textarea { font-size: 16px !important; }
+  /* Full-width foot buttons with 44px touch target */
   .toc-foot { flex-direction: row; gap: 8px; }
-  .toc-foot .btn { flex: 1; text-align: center; justify-content: center; padding: 10px 12px; font-size: 13px; }
+  .toc-foot .btn {
+    flex: 1; text-align: center; justify-content: center;
+    padding: 12px 10px; font-size: 14px; min-height: 44px;
+  }
+  /* Preview strip */
+  .toc-preview-strip { padding: 10px 12px; }
+  .toc-strip-box { min-width: 82px; max-width: 120px; }
+  /* Product view */
+  .toc-prod-topbar { gap: 8px; flex-direction: column; }
+  .toc-prod-topbar-actions { width: 100%; gap: 8px; }
+  .toc-prod-topbar-actions .btn {
+    flex: 1; justify-content: center; min-height: 44px;
+  }
+  .toc-prod-doc-title { font-size: 20px; }
 
   /* Module lessons */
   .lesson-body { padding: 0 4px; }
