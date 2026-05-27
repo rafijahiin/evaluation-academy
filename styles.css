@@ -313,8 +313,16 @@ a { color: inherit; }
   align-items: center;
   padding: 100px 0 80px;
   min-height: 82vh;
+  position: relative;
+  overflow: hidden;
 }
-.hero-copy { max-width: 680px; }
+.hero-canvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-copy { max-width: 680px; position: relative; z-index: 1; }
 
 /* Staggered hero animations */
 .hero-copy .eyebrow    { animation: heroReveal .7s var(--ease-out) .05s both; }
@@ -372,7 +380,7 @@ a { color: inherit; }
 /* ===========================
    HERO VISUAL — animated CPE phase journey
    =========================== */
-.hero-visual { position: relative; height: 560px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+.hero-visual { position: relative; z-index: 1; height: 560px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
 .hero-visual { animation: heroReveal .9s var(--ease-out) .3s both; }
 
 /* Phase Journey — the main visual */
@@ -445,7 +453,8 @@ a { color: inherit; }
 .pj-node:nth-child(4) { animation-delay: 1.4s; }
 .pj-node:nth-child(5) { animation-delay: 1.7s; }
 @keyframes nodeIn {
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .pj-circle {
@@ -459,11 +468,11 @@ a { color: inherit; }
   transition: all var(--t-med) var(--ease);
   font-variation-settings: "opsz" 144;
 }
-.pj-node:nth-child(1) .pj-circle { border-color: rgba(14,124,123,0.5); color: var(--brand-1); }
-.pj-node:nth-child(2) .pj-circle { border-color: rgba(14,124,123,0.4); color: var(--brand-1); animation-delay: 1.1s; }
-.pj-node:nth-child(3) .pj-circle { border-color: rgba(14,124,123,0.3); color: var(--brand-2); }
-.pj-node:nth-child(4) .pj-circle { border-color: rgba(23,63,95,0.3); color: var(--brand-3); }
-.pj-node:nth-child(5) .pj-circle { border-color: rgba(23,63,95,0.4); color: var(--brand-3); }
+.pj-node:nth-child(1) .pj-circle { border-color: rgba(14,124,123,0.55); color: var(--brand-1); }
+.pj-node:nth-child(2) .pj-circle { border-color: rgba(14,124,123,0.55); color: var(--brand-1); }
+.pj-node:nth-child(3) .pj-circle { border-color: rgba(14,124,123,0.55); color: var(--brand-1); }
+.pj-node:nth-child(4) .pj-circle { border-color: rgba(14,124,123,0.55); color: var(--brand-1); }
+.pj-node:nth-child(5) .pj-circle { border-color: rgba(14,124,123,0.55); color: var(--brand-1); }
 
 .pj-name {
   font-family: var(--sans); font-size: 11px; font-weight: 700;
